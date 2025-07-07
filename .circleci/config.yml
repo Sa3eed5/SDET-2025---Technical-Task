@@ -18,7 +18,7 @@ jobs:
           name: Run UI Tests
           command: npm run test:ui
       - store_artifacts:
-          path: reports/ui
+          path: UI-Tests/tests_output
           destination: ui-test-report
 
   run-api-tests:
@@ -32,12 +32,12 @@ jobs:
           name: Run API Tests
           command: npm run test:api
       - store_artifacts:
-          path: reports/api
+          path: API-Tests/test_output
           destination: api-test-report
 
 workflows:
   version: 2
-  test-workflow:
+  run-all-tests:
     jobs:
       - run-ui-tests
       - run-api-tests:
