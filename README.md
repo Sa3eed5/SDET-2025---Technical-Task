@@ -1,11 +1,11 @@
 # 🧪 QA Automation Project – My Store (UI + API Testing)
+This project is a complete QA automation framework for testing both the UI and API.
 
-This project demonstrates a complete **end-to-end QA automation framework** for both UI and API testing.
+🔍 UI Tests: We use NightwatchJS with the Page Object Model to test the My Store website. The tests check the Contact Us form, file upload, and product search features.
 
-* 🔍 The **UI tests** target the [My Store](http://automationpractice.multiformis.com) website using **NightwatchJS** with the **Page Object Model**, covering form validation, file upload, and search functionality.
-* 🔐 The **API tests** are built using **Supertest** and cover all endpoints provided by the [mock-user-auth](https://www.npmjs.com/package/mock-user-auth) npm module, validating both **authorized** and **unauthorized** scenarios with **valid/invalid** data.
+🔐 API Tests: We use Supertest to test all the routes from the mock-user-auth package. The tests include cases with correct and incorrect data, and with or without valid authorization tokens.
 
-This framework is designed to ensure maintainability, reusability, and clear reporting with documentation accessible to both technical and non-technical stakeholders.
+This project is easy to maintain and read. It also includes clear reports and documents that both developers and non-technical people can understand.
 
 ---
 
