@@ -14,19 +14,29 @@ This project is easy to maintain and read. It also includes clear reports and do
 ```
 project-root/
 │
-├── nightwatch/              # All NightwatchJS tests and page objects
-│   ├── page-objects/      # Page Object files
-│   └── reports/           # HTML test report
-├── tests/             # UI test cases (Contact form, Search, etc.)
+├── nightwatch/                # NightwatchJS setup folder
+│   ├── custom-assertions/     # Custom assertion methods
+│   ├── custom-commands/       # Custom command extensions
+│   └── page-objects/          # Page Object Model files
+|       |--contactUsPage.js
+|       |--homePage.js
+|       |-searchResualtsPage.js 
 │
-├── api-tests/             # All API tests using Supertest
-│   ├── tests/             # Route-specific test files
-│   └── reports/           # API test results (HTML/XML/manual)
+├── Tests/                     # All Nightwatch test cases
+│   ├── uiTests.js             # Main UI test suite
+│   └── report.js              # Optional script for generating reports
 │
-├── Bugs Report.docx       # Word file with bug tickets for all found bugs
-├── TestCase&TestExecution.xlsx        # Manual test cases for UI features
-```
-
+├── tests_output/              # Nightwatch test outputs
+│   └── nightwatch-html-report/
+│       ├── ui-test-report.html         # Final test report (HTML)
+│       ├── *_report.json/.xml          # Report formats per test and browser
+│       └── minimal_report.json         # Summarized result
+│
+├── Bugs Report.docx           # Word document for all found bugs
+├── TestCase&TestExecution.xlsx # Excel sheet with test cases and execution status
+├── nightwatch.conf.js         # NightwatchJS configuration file
+├── package.json               # Node.js dependencies
+└── README.md                  # Project documentation
 ---
 
 ## ✅ Features Covered
