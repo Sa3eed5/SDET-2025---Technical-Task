@@ -32,6 +32,17 @@ project-root/
 │       ├── *_report.json/.xml          # Report formats per test and browser
 │       └── minimal_report.json         # Summarized result
 │
+├── api-tests/
+│ └── auth.test.js # Main API test file
+|  ___report.html
+|
+____mock-user-auth/
+  |_____index.js
+│
+├── jest.config.js # Jest config (optional if default used)
+├── report.html # Test result report (generated automatically)
+├│
+|
 ├── Bugs Report.docx           # Word document for all found bugs
 ├── TestCase&TestExecution.xlsx # Excel sheet with test cases and execution status
 ├── nightwatch.conf.js         # NightwatchJS configuration file
@@ -54,14 +65,77 @@ project-root/
   * Search for "dress" and verify that all results are relevant
   * Use of Page Object Model (no hardcoded selectors)
 
-### API Tests (Supertest + mock-user-auth)
+ Covered API Routes and Test Cases
 
-* `/login`, `/logout`, `/register`, `/profile`, etc.
-* Test with:
+1. POST /register
 
-  * Valid data and authorization
-  * Invalid data and missing/invalid tokens
-* Test runner: `jest`
+✅ Create user with valid email and password
+
+❌ Register with empty email
+
+❌ Register with empty password
+
+❌ Register with invalid email format
+
+❌ Register with existing email
+
+❌ Register with short password (<6)
+
+❌ Register with long password (>30)
+
+2. POST /login
+
+✅ Authenticate with correct credentials
+
+❌ Authenticate with wrong credentials
+
+3. GET /profile
+
+✅ Get profile with valid token
+
+❌ Access profile without token
+
+4. PATCH /profile
+
+✅ Update profile with valid token and valid data
+
+❌ Update without token
+
+❌ Update with invalid email (Bug: accepts invalid email!)
+
+5. DELETE /profile
+
+✅ Delete profile with valid token
+
+❌ Delete profile with invalid token
+
+6. GET /all-users
+
+✅ Access with correct admin key
+
+❌ Access without admin key
+
+7. DELETE /all-users
+
+✅ Delete all users with correct admin key
+
+❌ Delete all users with wrong admin key
+
+🐞 Known Bugs
+
+Bug 1: Profile update accepts invalid email format
+
+Route: PATCH /profile
+
+Steps: Send { email: "wrong@gmail" }
+
+Expected: Should return 400
+
+Actual: Returns 200 and updates email
+
+Severity: Medium
+
+
 
 ---
 
