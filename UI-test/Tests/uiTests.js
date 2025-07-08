@@ -1,9 +1,8 @@
-// tests/contactFormTest.js
-
 module.exports = {
+  
   '@tags': ['contact', 'page-object'],
 
-  beforeEach: function (browser) {
+ beforeEach: function (browser) {
   const contact = browser.page.contactUsPage();
   contact
     .navigate()
@@ -86,7 +85,7 @@ module.exports = {
 
   'TC7: Submit with valid data and file': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = path.resolve(__dirname, '../uploads/test.txt');
+    const filePath = 'D:\\Saied\\test.txt';
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmail.com')
@@ -101,7 +100,7 @@ module.exports = {
 
   'TC8: Submit with unsupported file type': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = path.resolve(__dirname, '../uploads/test.xlsx');
+    const filePath = 'D:\\Saied\\test.xlsx';
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmial.com')
