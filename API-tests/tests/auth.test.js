@@ -149,17 +149,17 @@ describe("mock-user-auth - API Full Route Tests", () => {
     expect(res.statusCode).toBe(401);
   });
   // TC15
- /* test("TC15 - Should fail to update profile with invalid data", async () => {
+  test("TC15 - Should fail to update profile with invalid data", async () => {
     const res = await request(BASE_URL)
       .patch("/profile")         
       .set("Authorization", `Bearer ${token}`)
-      .send({ email: "wrong@gmail.com" });     
+      .send({ email: "wrong@" }); //  invalid email format
+  
     console.log(res.body);
     expect(res.statusCode).toBe(400);
-    expect(res.body).toHaveProperty("error", "Invalid email data");
-    });
-    */
-
+    expect(res.body).toHaveProperty("error", "Invalid email format");
+  });
+  
   // TC16
   test("TC16 - Should delete user profile with valid token", async () => {
     const res = await request(BASE_URL)
