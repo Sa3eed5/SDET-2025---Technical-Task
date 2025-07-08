@@ -32,18 +32,17 @@ jobs:
           name: Install API test dependencies
           command: |
             npm install
-
       - run:
           name: Start API server in background
           command: |
-            node API-tests/mock-user-auth/index.js &
+            node API-tests/mock-user-auth/components/mock/routes/index.js &
             sleep 3
       - run:
           name: Run API tests
           command: |
             npm run test:api
       - store_artifacts:
-          path: report.html
+          path: API-tests/mock-user-auth/components/mock/routes/report.html
           destination: api-test-report
 
 workflows:
