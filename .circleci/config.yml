@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Install API test dependencies
           command: |
-            cd mock-user-auth
+            cd API-Tests
             npm install
       - run:
           name: Run API tests
