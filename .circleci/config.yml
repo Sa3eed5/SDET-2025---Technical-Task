@@ -1,39 +1,52 @@
-
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.,test:jest:
 version: 2.1
-orbs:
-  node: circleci/node@5
+
+executors:
+  node-executor:
+    docker:
+      - image: cimg/node:18.17-browsers
+
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
-    environment:
-      JEST_JUNIT_OUTPUT_DIR: ./test-results/
+  run-ui-tests:
+    executor: node-executor
+    working_directory: ~/project/UI-test
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
-          command: npm install jest-junit
+          name: Install UI test dependencies
+          command: |
+            cd UI-test
+            npm install
       - run:
-          name: Run tests
-          command: npm run test --ci --runInBand --reporters=default --reporters=jest-junit
-      - store_test_results:
-          path: ./test-results/
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
+          name: Run UI tests
+          command: |
+            npm run test:ui
+      - store_artifacts:
+          path: UI-test/tests_output
+          destination: ui-test-report
+
+  run-api-tests:
+    executor: node-executor
+    working_directory: ~/project/mock-user-auth
     steps:
-      # Replace this with steps to deploy to users
+      - checkout
       - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          name: Install API test dependencies
+          command: |
+            cd mock-user-auth
+            npm install
+      - run:
+          name: Run API tests
+          command: |
+            npm run test:api
+      - store_artifacts:
+          path: mock-user-auth/components/mock/routes/report.html
+          destination: api-test-report
+
 workflows:
-  build-and-test:
+  version: 2
+  run-tests:
     jobs:
-      - test-node
-    # - deploy:
-    #     requires:
-    #       - test-node
+      - run-api-tests
+      - run-ui-tests:
+          requires:
+            - run-api-tests
