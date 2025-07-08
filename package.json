@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Full QA Project for UI and API testing",
   "scripts": {
-    "test:api": "jest API-tests/Tests/auth.test.js",
+    "test:api": "jest API-tests/tests/auth.test.js",
     "test:ui": "nightwatch",
     "test": "npm run test:api && npm run test:ui"
   },
