@@ -1,5 +1,5 @@
 # 🧪 QA Automation Project – My Store (UI + API Testing)ط
-[![CircleCI](https://circleci.com/gh/Sa3eed5/SDET-2025---Technical-Task.svg?style=svg)](https://circleci.com/gh/Sa3eed5/SDET-2025---Technical-Task)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/47K2vtfNpYFszw4jT5UsxD/Co1jAHvyu6qiwhJ564djLB/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/47K2vtfNpYFszw4jT5UsxD/Co1jAHvyu6qiwhJ564djLB/tree/master)
 
 This project is a complete QA automation framework for testing both the UI and API.
 
