@@ -2,7 +2,7 @@
   "name": "qa-testing-project",
   "version": "1.0.0",
   "scripts": {
-    "test:api": "jest 'API-test/tests/auth.test.js'",
+    "test:api": "jest 'API-tests/tests/auth.test.js'",
     "test:ui": "nightwatch",
     "test": "npm run test:api && npm run test:ui"
   },
