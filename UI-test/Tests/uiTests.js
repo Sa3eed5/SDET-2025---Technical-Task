@@ -4,9 +4,15 @@ module.exports = {
   '@tags': ['contact', 'page-object'],
 
   beforeEach: function (browser) {
-    const contact = browser.page.contactUsPage();
-    contact.navigate().maximizeWindow().waitForElementVisible('@sendButton', 5000);
-  },
+  const contact = browser.page.contactUsPage();
+  contact
+    .navigate()
+    .waitForElementVisible('body', 10000) // انتظار عام لتحميل الصفحة
+    .maximizeWindow()
+    .pause(3000) // تأخير مؤقت لضمان تحميل العناصر
+    .waitForElementVisible('@sendButton', 5000); // انتظار الزر بعد تحميل الصفحة
+}
+
 
   'TC1: Submit with all fields empty': function (browser) {
     const contact = browser.page.contactUsPage();
