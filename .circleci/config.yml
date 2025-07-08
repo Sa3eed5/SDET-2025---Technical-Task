@@ -8,7 +8,7 @@ executors:
 jobs:
   run-ui-tests:
     executor: node-executor
-  working_directory: ~/project
+  working_directory: ~/project/API-tests
     steps:
       - checkout
       - run:
