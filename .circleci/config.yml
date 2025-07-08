@@ -25,7 +25,6 @@ jobs:
 
   run-api-tests:
     executor: node-executor
-    working_directory: ~/project
     steps:
       - checkout
       - run:
