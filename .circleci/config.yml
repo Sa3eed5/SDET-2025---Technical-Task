@@ -36,7 +36,7 @@ jobs:
             sleep 3
       - run:
           name: Run API tests
-          command: npm run test
+          command: npm run test:ui
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
           destination: api-test-report
