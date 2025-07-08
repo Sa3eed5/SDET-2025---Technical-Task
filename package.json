@@ -1,11 +1,11 @@
 {
   "name": "api-tests",
   "version": "1.0.0",
- "scripts": {
-  "test:api": "jest API-tests/Tests/auth.test.js",
-  "test:ui": "nightwatch"
+ m"scripts": {
+   "test:api": "jest API-tests/Tests/auth.test.js",
+   "test:ui": "nightwatch"
 },
-
+ 
   "jest": {
     "reporters": [
       "default",
