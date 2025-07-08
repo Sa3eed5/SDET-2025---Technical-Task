@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test:api": "jest 'API-tests/tests/auth.test.js'",
     "test:ui": "nightwatch"
   },
   "devDependencies": {
