@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "test:api": "jest 'API-test/tests/auth.test.js'",
-  "test:ui": "nightwatch",
-  "test": "npm run test:api && npm run test:ui"
+    "test:api": "jest 'API-test/tests/auth.test.js'",
+    "test:ui": "nightwatch",
+    "test": "npm run test:api && npm run test:ui"
 },
 
   "devDependencies": {
