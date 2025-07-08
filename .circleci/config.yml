@@ -26,7 +26,7 @@ jobs:
 
   run-api-tests:
     executor: node-executor
-    working_directory: ~/project/mock-user-auth
+    working_directory: ~/project/API-tests
     steps:
       - checkout
       - run:
@@ -37,6 +37,7 @@ jobs:
       - run:
           name: Run API tests
           command: |
+            cd mock-user-auth
             npm run test:api
       - store_artifacts:
           path: mock-user-auth/components/mock/routes/report.html
