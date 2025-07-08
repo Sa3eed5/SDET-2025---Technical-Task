@@ -4,17 +4,15 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js",
-    "test:ui": "npx nightwatch UI-Tests/Tests/uiTests.js --env chrome --headless",
-    "test:api": "jest API Tests/Tests/auth.test.js"
-
-
+    "test:ui": "npx nightwatch UI-test/Tests/uiTests.js --env chrome --headless",
+    "test:api": "jest \"API Test/Tests/auth.test.js\""
   },
   "jest": {
     "reporters": [
       "default",
       ["jest-html-reporter", {
         "pageTitle": "Mock User Auth API Test Report",
-        "outputPath": "report.html"
+        "outputPath": "mock-user-auth/report.html"
       }]
     ]
   },
