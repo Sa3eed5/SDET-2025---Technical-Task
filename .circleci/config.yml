@@ -40,6 +40,7 @@ jobs:
       - run:
           name: Run API tests
           command: |
+            node API-tests/mock-user-auth/components/mock/routes/index.js &
             npm run test:api
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
