@@ -7,52 +7,45 @@ executors:
 
 jobs:
   run-ui-tests:
+    working_directory: ~/project/UI-test
     executor: node-executor
     steps:
       - checkout
-
-      - run:
-          name: Install dependencies
-          command: |
-            npm install
-            npm install nightwatch-html-reporter --save-dev
-
-      - run:
-          name: Run UI Tests with Nightwatch
-          command: npm run test:ui
-
-      - store_artifacts:
-          path: UI-test/reports
-          destination: ui-test-report
-
-  run-api-tests:
-    executor: node-executor
-    steps:
-      - checkout
-
       - run:
           name: Install dependencies
           command: npm install
+      - run:
+          name: Run UI Tests
+          command: npm run test:ui
+      - store_artifacts:
+          path: tests_output/nightwatch-html-report
+          destination: ui-test-report
 
+  run-api-tests:
+    working_directory: ~/project/mock-user-auth
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
       - run:
           name: Start mock server
           command: |
             npm run dev &
             sleep 5
-
       - run:
-          name: Run API Tests with Jest
+          name: Run API Tests
           command: npm run test:api
-
       - store_artifacts:
-          path: mock-user-auth/report.html
+          path: report.html
           destination: api-test-report
 
 workflows:
   version: 2
   run-all-tests:
     jobs:
-      - run-ui-tests
-      - run-api-tests:
+      - run-api-tests
+      - run-ui-tests:
           requires:
-            - run-ui-tests
+            - run-api-tests
