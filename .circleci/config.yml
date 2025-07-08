@@ -37,10 +37,10 @@ jobs:
       - run:
           name: Run API tests
           command: |
-            cd mock-user-auth
+            cd API-tests
             npm run test:api
       - store_artifacts:
-          path: mock-user-auth/components/mock/routes/report.html
+          path: API-tests/report.html
           destination: api-test-report
 
 workflows:
