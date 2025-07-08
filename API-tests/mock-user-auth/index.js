@@ -56,7 +56,8 @@ app.get("/profile", (req, res) => {
 // Profile (PATCH)
 app.patch("/profile", (req, res) => {
   const auth = req.headers.authorization;
-  const { password } = req.body;
+  const { password, email } = req.body;
+
   if (!auth || !auth.startsWith("Bearer "))
     return res.status(401).json({ error: "Unauthorized" });
 
@@ -64,9 +65,41 @@ app.patch("/profile", (req, res) => {
   const user = users.find((u) => u.token === token);
   if (!user) return res.status(401).json({ error: "Unauthorized" });
 
-  user.password = password;
-  res.status(200).json({ message: "Password updated" });
+  // Check email if provided
+  if (email) {
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ error: "Invalid email format" });
+    }
+    if (users.some((u) => u.email === email && u.token !== token)) {
+      return res.status(400).json({ error: "Email already in use" });
+    }
+    user.email = email;
+  }
+
+  // Update password if provided
+  if (password) {
+    if (password.length < 6) {
+      return res
+        .status(400)
+        .json({ error: "Password must be at least 6 characters long" });
+    }
+    if (password.length > 30) {
+      return res
+        .status(400)
+        .json({ error: "Password must be at most 30 characters long" });
+    }
+    user.password = password;
+  }
+
+  //  Return success if at least one field is updated
+  if (email || password) {
+    return res.status(200).json({ message: "Profile updated successfully" });
+  }
+
+  return res.status(400).json({ error: "No valid fields to update" });
 });
+
+
 
 // Profile (DELETE)
 app.delete("/profile", (req, res) => {
@@ -83,12 +116,20 @@ app.delete("/profile", (req, res) => {
 });
 
 // Admin Delete All Users
-app.delete("/all-users", (req, res) => {
-  const { key_admin } = req.body;
-  if (key_admin !== "admin") return res.status(401).json({ error: "Unauthorized" });
-  users = [];
-  res.status(200).json({ message: "All users deleted" });
+app.delete("/all-users", express.json(), (req, res) => {
+  try {
+    const { key_admin } = req.body || {};
+    if (key_admin !== "admin") {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    users = [];
+    res.status(200).json({ message: "All users deleted" });
+  } catch (error) {
+    console.error("Delete All Users Error:", error.message);
+    res.status(500).json({ error: "Server error" });
+  }
 });
+
 
 // Admin View All Users
 app.get("/all-users", (req, res) => {
