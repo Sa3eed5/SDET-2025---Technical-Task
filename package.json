@@ -5,7 +5,7 @@
     "test": "jest",
     "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js",
     "test:ui": "npx nightwatch UI-Tests/Tests/uiTests.js --env chrome --headless",
-    "test:api": "jest API-Tests/api-tests"
+    "test:api": "jest API Tests/Tests/auth.test.js"
 
 
   },
