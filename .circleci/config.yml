@@ -1,38 +1,49 @@
 version: 2.1
 
-jobs:
-  ui-tests:
+executors:
+  node-executor:
     docker:
-      - image: cimg/node:20.5.0
-    steps:
-      - checkout
-      - run: npm install
-      - run:
-          name: Run UI Tests with Nightwatch
-          command: npm run test:ui
+      - image: cimg/node:18.17-browsers
 
-  api-tests:
-    docker:
-      - image: cimg/node:20.5.0
+jobs:
+  run-ui-tests:
+    executor: node-executor
     steps:
       - checkout
-      - run: npm install
       - run:
-          name: Start mock server (in background)
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Run UI Tests
+          command: npm run test:ui
+      - store_artifacts:
+          path: ui-test-report.html
+          destination: ui-test-report
+
+  run-api-tests:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Start mock server
           command: |
             npm run dev &
-            sleep 3
+            sleep 5
       - run:
-          name: Run API Tests with Jest
+          name: Run API Tests
           command: npm run test:api
-
       - store_artifacts:
-          path: report.html
-          destination: api-test-report.html
+          path: mock-user-auth/report.html
+          destination: api-test-report
 
 workflows:
   version: 2
-  test_all:
+  run-all-tests:
     jobs:
-      - ui-tests
-      - api-tests
+      - run-ui-tests
+      - run-api-tests:
+          requires:
+            - run-ui-tests
