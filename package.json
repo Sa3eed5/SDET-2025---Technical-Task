@@ -2,12 +2,11 @@
   "name": "api-tests",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js",
-    "test": "jest",
-    "test:ui": "nightwatch",
-    "test:api": "jest \"API-tests/tests/auth.test.js\"",
-    "test:all": "npm run test:ui && npm run test:api"
-  },
+ "scripts": {
+  "test:api": "jest API-tests/Tests/auth.test.js",
+  "test:ui": "nightwatch"
+},
+
   "jest": {
     "reporters": [
       "default",
