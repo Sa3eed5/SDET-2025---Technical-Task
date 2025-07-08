@@ -10,7 +10,7 @@ module.exports = {
     .maximizeWindow()
     .pause(3000) 
     .waitForElementVisible('@sendButton', 5000);
-}
+},
 
 
   'TC1: Submit with all fields empty': function (browser) {
