@@ -1,5 +1,7 @@
 module.exports = {
   src_folders: ["UI-test/Tests"],
+  skip_testcases_on_fail: false,
+
 
   page_objects_path: ["UI-test/page-objects"],
 
