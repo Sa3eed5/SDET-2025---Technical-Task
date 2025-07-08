@@ -1,21 +1,34 @@
 {
-  "name": "ui-test",
+  "name": "qa-testing-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test:api": "jest 'API-test/tests/auth.test.js'",
     "test:ui": "nightwatch",
     "test": "npm run test:api && npm run test:ui"
-},
-
-  "devDependencies": {
-    "chromedriver": "^138.0.1",
-    "nightwatch": "^3.12.2",
-    "nightwatch-html-reporter": "^2.0.6"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "dependencies": {
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-html-reporter": "^3.6.0",
+    "nightwatch": "^3.12.2",
+    "nightwatch-html-reporter": "^2.0.6",
+    "chromedriver": "^138.0.1"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporter",
+        {
+          "pageTitle": "Mock User Auth API Test Report",
+          "outputPath": "API-test/report.html",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
+        }
+      ]
+    ],
+    "testEnvironment": "node"
+  }
 }
