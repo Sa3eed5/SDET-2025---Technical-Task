@@ -7,10 +7,10 @@ module.exports = {
   const contact = browser.page.contactUsPage();
   contact
     .navigate()
-    .waitForElementVisible('body', 10000) // انتظار عام لتحميل الصفحة
+    .waitForElementVisible('body', 10000)  
     .maximizeWindow()
-    .pause(3000) // تأخير مؤقت لضمان تحميل العناصر
-    .waitForElementVisible('@sendButton', 5000); // انتظار الزر بعد تحميل الصفحة
+    .pause(3000) 
+    .waitForElementVisible('@sendButton', 5000);
 }
 
 
@@ -86,7 +86,7 @@ module.exports = {
 
   'TC7: Submit with valid data and file': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = 'D:\\Saied\\test.txt';
+    const filePath = path.resolve(__dirname, '../uploads/test.txt');
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmail.com')
@@ -101,7 +101,7 @@ module.exports = {
 
   'TC8: Submit with unsupported file type': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = 'D:\\Saied\\test.xlsx';
+    const filePath = path.resolve(__dirname, '../uploads/test.xlsx');
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmial.com')
