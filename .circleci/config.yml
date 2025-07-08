@@ -10,31 +10,40 @@ jobs:
     executor: node-executor
     steps:
       - checkout
+
       - run:
           name: Install dependencies
-          command: npm install
+          command: |
+            npm install
+            npm install nightwatch-html-reporter --save-dev
+
       - run:
-          name: Run UI Tests
+          name: Run UI Tests with Nightwatch
           command: npm run test:ui
+
       - store_artifacts:
-          path: ui-test-report.html
+          path: UI-test/reports
           destination: ui-test-report
 
   run-api-tests:
     executor: node-executor
     steps:
       - checkout
+
       - run:
           name: Install dependencies
           command: npm install
+
       - run:
           name: Start mock server
           command: |
             npm run dev &
             sleep 5
+
       - run:
-          name: Run API Tests
+          name: Run API Tests with Jest
           command: npm run test:api
+
       - store_artifacts:
           path: mock-user-auth/report.html
           destination: api-test-report
