@@ -12,36 +12,31 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install UI test dependencies
-          command: |
-            npm install
+          name: Install dependencies
+          command: npm install
       - run:
           name: Run UI tests
-          command: |
-            npm run test:ui
+          command: npm run test:ui
       - store_artifacts:
           path: UI-test/tests_output
           destination: ui-test-report
 
   run-api-tests:
     executor: node-executor
-    working_directory: ~/project/API-tests/mock-user-auth
+    working_directory: ~/project
     steps:
       - checkout
       - run:
-          name: Install API test dependencies
-          command: |
-            npm install
+          name: Install dependencies
+          command: npm install
       - run:
-          name: Start API server in background
+          name: Start mock API server
           command: |
             node API-tests/mock-user-auth/components/mock/routes/index.js &
             sleep 3
       - run:
           name: Run API tests
-          command: |
-            node API-tests/mock-user-auth/components/mock/routes/index.js &
-            npm run test:api
+          command: npm run test:api
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
           destination: api-test-report
