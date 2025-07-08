@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js",
     "test": "jest",
-    "test:ui": "nightwatch --env chrome",
+    "test:ui": "nightwatch",
     "test:api": "jest \"API Test/Tests/auth.test.js\"",
     "test:all": "npm run test:ui && npm run test:api"
   },
