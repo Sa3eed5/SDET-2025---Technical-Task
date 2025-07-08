@@ -1,7 +1,6 @@
 {
   "name": "api-tests",
   "version": "1.0.0",
-  "scripts": {
  "scripts": {
   "test:api": "jest API-tests/Tests/auth.test.js",
   "test:ui": "nightwatch"
