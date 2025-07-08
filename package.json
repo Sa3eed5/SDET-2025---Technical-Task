@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:api": "jest 'API-test/tests/auth.test.js'",
-    "test:ui": "nightwatch"
-  },
+  "test:api": "jest 'API-test/tests/auth.test.js'",
+  "test:ui": "nightwatch",
+  "test": "npm run test:api && npm run test:ui"
+},
+
   "devDependencies": {
     "chromedriver": "^138.0.1",
     "nightwatch": "^3.12.2",
