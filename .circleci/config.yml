@@ -1,5 +1,5 @@
 version: 2.1
- 
+
 executors:
   node-executor:
     docker:
@@ -46,6 +46,4 @@ workflows:
   run-tests:
     jobs:
       - run-api-tests
-      - run-ui-tests:
-          requires:
-            - run-api-tests
+      - run-ui-tests
