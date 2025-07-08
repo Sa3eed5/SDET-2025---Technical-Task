@@ -32,6 +32,12 @@ jobs:
           name: Install API test dependencies
           command: |
             npm install
+
+      - run:
+          name: Start API server in background
+          command: |
+            node API-tests/mock-user-auth/index.js &
+            sleep 3
       - run:
           name: Run API tests
           command: |
