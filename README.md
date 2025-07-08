@@ -1,4 +1,6 @@
-# 🧪 QA Automation Project – My Store (UI + API Testing)
+# 🧪 QA Automation Project – My Store (UI + API Testing)ط
+[![CircleCI](https://circleci.com/gh/Sa3eed5/SDET-2025---Technical-Task.svg?style=svg)](https://circleci.com/gh/Sa3eed5/SDET-2025---Technical-Task)
+
 This project is a complete QA automation framework for testing both the UI and API.
 
 🔍 UI Tests: We use NightwatchJS with the Page Object Model to test the My Store website. The tests check the Contact Us form, file upload, and product search features.
