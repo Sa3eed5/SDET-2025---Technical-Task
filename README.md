@@ -16,42 +16,47 @@ This project is easy to maintain and read. It also includes clear reports and do
 ## 📁 Project Structure
 
 ```
+## 📁 Project Structure
+
 project-root/
 │
-├── nightwatch/                # NightwatchJS setup folder
-│   ├── custom-assertions/     # Custom assertion methods
-│   ├── custom-commands/       # Custom command extensions
-│   └── page-objects/          # Page Object Model files
-|       |--contactUsPage.js
-|       |--homePage.js
-|       |-searchResualtsPage.js 
+├── .circleci/                       # CircleCI CI/CD config
+│   └── config.yml                   # Main pipeline workflow
 │
-├── Tests/                     # All Nightwatch test cases
-│   ├── uiTests.js             # Main UI test suite
-│   └── report.js              # Optional script for generating reports
+├── UI-test/
+│   ├── Tests/                       # All UI test cases
+│   │   ├── uiTests.js               # Main UI test suite
+│   │   ├── report.js                # (Optional) Generate UI test reports
+│   │   └── uploads/                 # Test files for upload
+│   │       ├── test.txt
+│   │       └── test.xls
+│   │
+│   └── page-objects/                # Page Object Model files
+│       ├── contactUsPage.js
+│       ├── homePage.js
+│       └── searchResultsPage.js
 │
-├── tests_output/              # Nightwatch test outputs
-│   └── nightwatch-html-report/
-│       ├── ui-test-report.html         # Final test report (HTML)
-│       ├── *_report.json/.xml          # Report formats per test and browser
-│       └── minimal_report.json         # Summarized result
+├── tests_output/                    # Nightwatch test output folder
+│   └── ui-test-report.html          # Final test result (HTML)
 │
-├── api-tests/
-│ └── auth.test.js # Main API test file
-|  ___report.html
-|
-____mock-user-auth/
-  |_____index.js
+├── API-tests/
+│   └── mock-user-auth/
+│       ├── components/
+│       │   └── mock/
+│       │       └── routes/
+│       │           └── index.js     # Mock API server
+│       ├── tests/
+│       │   └── auth.test.js         # Main API test file
+│       ├── index.js
+│       └── report.html              # Jest HTML test report
 │
-├── jest.config.js # Jest config (optional if default used)
-├── report.html # Test result report (generated automatically)
-├│
-|
-├── Bugs Report.docx           # Word document for all found bugs
-├── TestCase&TestExecution.xlsx # Excel sheet with test cases and execution status
-├── nightwatch.conf.js         # NightwatchJS configuration file
-├── package.json               # Node.js dependencies
-└── README.md                  # Project documentation
+├── Bugs Report.docx                 # Manual bug documentation
+├── TestCase&TestExecution.xlsx      # Manual test cases and execution tracking
+├── nightwatch.conf.js               # NightwatchJS configuration
+├── package.json                     # Project dependencies and scripts
+├── package-lock.json
+└── README.md                        # Project documentation
+
 ---
 
 ## ✅ Features Covered
