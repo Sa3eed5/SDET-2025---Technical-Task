@@ -85,7 +85,7 @@ module.exports = {
 
   'TC7: Submit with valid data and file': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = 'D:\\Saied\\test.txt';
+    const filePath = 'UI-test/Tests/uploads/test.txt';
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmail.com')
@@ -100,7 +100,7 @@ module.exports = {
 
   'TC8: Submit with unsupported file type': function (browser) {
     const contact = browser.page.contactUsPage();
-    const filePath = 'D:\\Saied\\test.xlsx';
+    const filePath = 'UI-test/Tests/uploads/test.xls';
     contact.click('@subjectHeading')
       .click('option[value="2"]')
       .setValue('@emailField', 'saied@gmial.com')
