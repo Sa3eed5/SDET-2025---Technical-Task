@@ -4,7 +4,8 @@
   "scripts": {
     "test:api": "jest 'API-tests/mock-user-auth/tests/auth.test.js'",
     "test:ui": "nightwatch",
-    "test": "npm run test:api && npm run test:ui"
+    "test": "npm run test:api && npm run test:ui",
+    "start:server": "node components/mock/routes/index.js"
   },
   "dependencies": {
     "supertest": "^6.3.3"
