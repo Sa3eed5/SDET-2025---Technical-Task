@@ -48,7 +48,7 @@ jobs:
           name: Start mock API server
           command: |
             cd API-tests/mock-user-auth
-             npm run start:server &
+            npm start &
             sleep 5
 
       - run:
