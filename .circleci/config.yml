@@ -66,5 +66,7 @@ workflows:
   run-tests:
     jobs:
       - run-ui-tests
-      - run-api-tests
+      - run-api-tests:
+          requires:
+            - run-ui-tests
         
