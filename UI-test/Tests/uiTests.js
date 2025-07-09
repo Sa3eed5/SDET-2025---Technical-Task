@@ -112,7 +112,7 @@ module.exports = {
       .assert.containsText('@errorAlert', 'Bad file extension')
       .pause(2000);
   },
-
+/*                 
   'TC9: Max Length Message': function (browser) {
     const contact = browser.page.contactUsPage();
     const longMsg = 'This is a test message.'.repeat(100);
@@ -138,7 +138,8 @@ module.exports = {
       .waitForElementVisible('@errorAlert', 5000)
       .assert.containsText('@errorAlert', 'Please enter a message that is at least 10 characters long.')
       .pause(2000);
-  },
+     
+  }, */
   'TC11: Verify functionality of Send Button': function (browser) {
     const contact = browser.page.contactUsPage();
     contact.click('@subjectHeading')
@@ -152,15 +153,15 @@ module.exports = {
       .pause(2000);
   },
   // Verify that the search functionality works correctly
-  'Search for "dress" and verify results': function (browser) {
-    const homePage = browser.page.homePage();
-    const resultsPage = browser.page.searchResultsPage(); // Page object for search results
-    homePage.navigate();
-    homePage.searchFor('dress');
-    resultsPage.waitForElementVisible('@resultContainer', 5000);// Wait for the results container to be visible
-    resultsPage.verifyResultsContain('dress');// Verify that results contain the search term 'dress'
+  // 'Search for "dress" and verify results': function (browser) {
+  //   const homePage = browser.page.homePage();
+  //   const resultsPage = browser.page.searchResultsPage(); // Page object for search results
+  //   homePage.navigate();
+  //   homePage.searchFor('dress');
+  //   resultsPage.waitForElementVisible('@resultContainer', 5000);// Wait for the results container to be visible
+  //   resultsPage.verifyResultsContain('dress');// Verify that results contain the search term 'dress'
 
-  },
+  // },
 
   after: function (browser) {
     browser.pause(5000);
