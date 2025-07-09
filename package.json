@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
+    "supertest": "^6.3.3",
     "jest-html-reporter": "^3.6.0",
     "nightwatch": "^3.12.2",
     "nightwatch-html-reporter": "^2.0.6",
