@@ -27,10 +27,6 @@ jobs:
           command: npm install
 
       - run:
-          name: Wait for API to be ready
-          command: npx wait-on http://localhost:3000
-
-      - run:
           name: Run UI tests
           command: npm run test:ui
 
@@ -51,6 +47,9 @@ jobs:
       - run:
           name: Start mock API server
           command: npm start 
+      - run:
+          name: Wait for API to be ready
+          command: npx wait-on http://localhost:3000
 
       - run:
           name: Run API tests
