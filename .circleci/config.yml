@@ -50,19 +50,9 @@ jobs:
       - run:
           name: Start mock API server
           command: |
-            node API-tests/mock-user-auth/index.js &
+            npm run start:api &
             sleep 5
-      - run:
-          name: Wait for API server to be ready
-          command: npx wait-on http://localhost:3000 --timeout=30000
-      - run:
-          name: check if server is reachable
-          command: |
-            sleep 3
-            curl -i http://localhost:3000 || echo "Server is not up"
-
-
-
+            npx wait-on http://localhost:3000
       - run:
           name: Run API tests
           command: npm run test:api
