@@ -43,22 +43,24 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+      - run:
+          name: Install wait-on
+          command: npm install --save-dev wait-on
 
       - run:
           name: Start mock API server
           command: |
-            node API-tests/mock-user-auth/index.js > server.log 2>&1 &
+            node API-tests/mock-user-auth/index.js &
             sleep 5
-            cat server.log
-
+      - run:
+          name: Wait for API server to be ready
+          command: npx wait-on http://localhost:3000 --timeout=30000
       - run:
           name: check if server is reachable
           command: |
             sleep 3
             curl -i http://localhost:3000 || echo "Server is not up"
-      - run:
-          name: Wait for API server to be ready
-          command: npx wait-on http://localhost:3000 --timeout=30000
+
 
 
       - run:
