@@ -11,12 +11,25 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+
+      - run:
+          name: Install Google Chrome
+          command: |
+            sudo apt update
+            sudo apt install -y wget gnupg2
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt update
+            sudo apt install -y google-chrome-stable
+
       - run:
           name: Install dependencies
           command: npm install
+
       - run:
           name: Run UI tests
           command: npm run test:ui
+
       - store_artifacts:
           path: UI-test/tests_output
           destination: ui-test-report
@@ -26,17 +39,21 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+
       - run:
           name: Install dependencies
           command: npm install
+
       - run:
           name: Start mock API server
           command: |
-            node API-tests/mock-user-auth/components/mock/routes/index.js &
+            node API-tests/mock-user-auth/index.js &
             sleep 3
+
       - run:
           name: Run API tests
           command: npm run test:api
+
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
           destination: api-test-report
