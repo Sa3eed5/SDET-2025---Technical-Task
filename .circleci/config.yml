@@ -50,9 +50,7 @@ jobs:
 
       - run:
           name: Start mock API server
-          command: |
-            npm start &
-            sleep 20
+          command: npm start 
 
       - run:
           name: Run API tests
