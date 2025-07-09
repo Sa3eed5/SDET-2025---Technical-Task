@@ -34,33 +34,36 @@ jobs:
           path: UI-test/tests_output
           destination: ui-test-report
 
-  run-api-tests:
-    executor: node-executor
-    working_directory: ~/project
-    steps:
-      - checkout
+ run-api-tests:
+  executor: node-executor
+  working_directory: ~/project
+  steps:
+    - checkout
 
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Install wait-on
-          command: npm install --save-dev wait-on
+    - run:
+        name: Install dependencies
+        command: npm install
 
-      - run:
-          name: Start mock API server
-          command: |
-            nohup npm run start:api > server.log 2>&1 &
-            npx wait-on http://localhost:3000
+    - run:
+        name: Install wait-on
+        command: npm install --save-dev wait-on
 
-      - run:
-          name: Run API tests
-          command: npm run test:api
+    - run:
+        name: Start mock API server
+        command: npm run start:api
+        background: true
 
+    - run:
+        name: Wait for server to be ready
+        command: npx wait-on http://localhost:${PORT}
 
-      - store_artifacts:
-          path: API-tests/mock-user-auth/components/mock/routes/report.html
-          destination: api-test-report
+    - run:
+        name: Run API tests
+        command: npm run test:api
+
+    - store_artifacts:
+        path: API-tests/mock-user-auth/components/mock/routes/report.html
+        destination: api-test-report
 
 workflows:
   version: 2
