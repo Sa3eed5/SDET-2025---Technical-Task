@@ -50,12 +50,13 @@ jobs:
       - run:
           name: Start mock API server
           command: |
-            npm run start:api &
-            sleep 5
+            npm run start:api &  
             npx wait-on http://localhost:3000
+
       - run:
           name: Run API tests
           command: npm run test:api
+
 
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
