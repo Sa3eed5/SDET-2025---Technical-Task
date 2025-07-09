@@ -49,8 +49,6 @@ jobs:
           command: |
             npm start &
             sleep 5
-            cat api.log
-
       - run:
           name: check if server is reachable
           command: |
