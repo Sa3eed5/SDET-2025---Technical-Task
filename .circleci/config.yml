@@ -46,7 +46,7 @@ jobs:
 
       - run:
           name: Start mock API server
-          command: npm start 
+          command: npm start &
       - run:
           name: check if server is reachable
           command: |
