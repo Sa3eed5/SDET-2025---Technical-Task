@@ -2,7 +2,7 @@
   "name": "qa-testing-project",
   "version": "1.0.0",
   "scripts": {
-    "start": "node components/mock/routes/index.js",
+    "start": "node API-tests/mock-user-auth/index.js",
     "test:api": "jest 'API-tests/mock-user-auth/tests/auth.test.js'",
     "test:ui": "nightwatch",
     "test": "npm run test:api && npm run test:ui"
