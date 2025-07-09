@@ -47,8 +47,9 @@ jobs:
       - run:
           name: Start mock API server
           command: |
-            node API-tests/mock-user-auth/components/mock/routes/index.js &
-            sleep 3
+            cd API-tests/mock-user-auth
+             npm run start:server &
+            sleep 5
 
       - run:
           name: Run API tests
