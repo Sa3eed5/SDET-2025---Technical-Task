@@ -1,5 +1,5 @@
 # 🧪 QA Automation Project – My Store (UI + API Testing)
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/47K2vtfNpYFszw4jT5UsxD/Co1jAHvyu6qiwhJ564djLB/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/47K2vtfNpYFszw4jT5UsxD/Co1jAHvyu6qiwhJ564djLB/tree/master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/47K2vtfNpYFszw4jT5UsxD/6ciuWXFmnYjaAnS1STpyN2/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/47K2vtfNpYFszw4jT5UsxD/6ciuWXFmnYjaAnS1STpyN2/tree/main)
 
 This project is a complete QA automation framework for testing both the UI and API.
 
