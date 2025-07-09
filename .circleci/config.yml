@@ -48,8 +48,10 @@ jobs:
           name: Start mock API server
           command: npm start 
       - run:
-          name: Wait for API to be ready
-          command: npx wait-on http://localhost:3000
+          name: Debug: check if server is reachable
+          command: |
+            sleep 3
+            curl -i http://localhost:3000 || echo "Server is not up"
 
       - run:
           name: Run API tests
