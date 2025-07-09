@@ -48,7 +48,7 @@ jobs:
           name: Start mock API server
           command: npm start 
       - run:
-          name: Debug: check if server is reachable
+          name: check if server is reachable
           command: |
             sleep 3
             curl -i http://localhost:3000 || echo "Server is not up"
