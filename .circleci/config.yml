@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Start mock API server
           command: |
-            npm run start:api &  
+            nohup npm run start:api > server.log 2>&1 &
             npx wait-on http://localhost:3000
 
       - run:
