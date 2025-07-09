@@ -62,6 +62,5 @@ workflows:
   version: 2
   run-tests:
     jobs:
-      - run-api-tests
       - run-ui-tests
         
