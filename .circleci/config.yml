@@ -47,8 +47,10 @@ jobs:
       - run:
           name: Start mock API server
           command: |
-            npm start &
+            node API-tests/mock-user-auth/index.js > server.log 2>&1 &
             sleep 5
+            cat server.log
+
       - run:
           name: check if server is reachable
           command: |
