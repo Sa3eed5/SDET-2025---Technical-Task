@@ -18,7 +18,9 @@
     "jest-html-reporter": "^3.6.0",
     "nightwatch": "^3.12.2",
     "nightwatch-html-reporter": "^2.0.6",
-    "chromedriver": "^138.0.1"
+    "chromedriver": "^138.0.1",
+    "wait-on": "^7.0.1"
+
   },
   "jest": {
     "reporters": [
