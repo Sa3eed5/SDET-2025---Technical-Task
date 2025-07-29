@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
-
+ 
       - run:
           name: Run UI tests
           command: npm run test:ui
@@ -43,16 +43,19 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+      - run:
+          name: Install wait-on
+          command: npm install --save-dev wait-on
 
       - run:
           name: Start mock API server
-          command: |
-            node API-tests/mock-user-auth/index.js &
-            sleep 3
-
+          command: npm run start:api
+          background: true
+  
       - run:
           name: Run API tests
           command: npm run test:api
+
 
       - store_artifacts:
           path: API-tests/mock-user-auth/components/mock/routes/report.html
@@ -62,5 +65,5 @@ workflows:
   version: 2
   run-tests:
     jobs:
-      - run-api-tests
       - run-ui-tests
+      - run-api-tests
